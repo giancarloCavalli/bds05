@@ -9,21 +9,21 @@ public class ReviewDTO implements Serializable {
 	
 	private Long id;
 	private String text;
-	private Long userId;
+	private UserDTO user;
 	
 	public ReviewDTO() {
 	}
 
-	public ReviewDTO(Long id, String text, Long userId) {
+	public ReviewDTO(Long id, String text, UserDTO user) {
 		this.id = id;
 		this.text = text;
-		this.userId = userId;
+		this.user = user;
 	}
 	
 	public ReviewDTO(Review entity) {
 		this.id = entity.getId();
 		this.text = entity.getText();
-		this.userId = entity.getUser().getId();
+		this.user = new UserDTO(entity.getUser());
 	}
 
 	public Long getId() {
@@ -42,12 +42,12 @@ public class ReviewDTO implements Serializable {
 		this.text = text;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public UserDTO getUser() {
+		return user;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUser(UserDTO user) {
+		this.user = user;
 	}
 	
 }
